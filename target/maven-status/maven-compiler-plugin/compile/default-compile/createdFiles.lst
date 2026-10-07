@@ -1,7 +1,6 @@
-com\mycompany\crediya\CrediYa.class
-com\mycompany\crediya\model\Empleado.class
 com\mycompany\crediya\dao\Conexion.class
 com\mycompany\crediya\model\Persona.class
+com\mycompany\crediya\model\Empleado.class
 com\mycompany\crediya\model\Prestamo.class
 com\mycompany\crediya\model\Pago.class
 com\mycompany\crediya\model\Cliente.class

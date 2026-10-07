@@ -1,7 +1,15 @@
 C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\CrediYa.java
+C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\dao\ClienteDAO.java
 C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\dao\Conexion.java
+C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\dao\EmpleadoDAO.java
+C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\dao\PagoDAO.java
+C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\dao\PrestamoDAO.java
 C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\model\Cliente.java
 C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\model\Empleado.java
 C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\model\Pago.java
 C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\model\Persona.java
 C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\model\Prestamo.java
+C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\service\ClienteService.java
+C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\service\EmpleadoService.java
+C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\service\PagoService.java
+C:\Users\Keyner\Documents\NetBeansProjects\CrediYa\src\main\java\com\mycompany\crediya\service\PrestamoService.java

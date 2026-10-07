@@ -49,6 +49,18 @@ public class Prestamo {
 
         saldoPendiente = totalPagar;
     }
+    
+    public void setTotalPagar(double totalPagar) {
+        this.totalPagar = totalPagar;
+    }
+
+    public void setCuotaMensual(double cuotaMensual) {
+        this.cuotaMensual = cuotaMensual;
+    }
+
+    public void setSaldoPendiente(double saldoPendiente) {
+        this.saldoPendiente = saldoPendiente;
+    }
 
     public void registrarPago(double montoPago) {
 

@@ -10,20 +10,33 @@ import java.sql.SQLException;
 
 public class Conexion {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/crediya_db";
-    private static final String USER = "root";
-    private static final String PASSWORD = "Andres_2909";
+    private static final String URL =
+            "jdbc:mysql://localhost:3306/crediya_db";
+
+    private static final String USER =
+            System.getenv("CREDIYA_DB_USER");
+
+    private static final String PASSWORD =
+            System.getenv("CREDIYA_DB_PASSWORD");
 
     public static Connection conectar() {
 
         try {
+
+            if (USER == null || PASSWORD == null) {
+                throw new SQLException(
+                    "No se encontraron las variables CREDIYA_DB_USER " +
+                    "y CREDIYA_DB_PASSWORD."
+                );
+            }
+
             Connection conexion = DriverManager.getConnection(
                     URL,
                     USER,
                     PASSWORD
             );
 
-            System.out.println("Conexion exitosa a CrediYa.");
+            System.out.println("Conexion exitosa a MySQL.");
 
             return conexion;
 
