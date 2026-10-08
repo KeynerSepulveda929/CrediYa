@@ -5,14 +5,21 @@
 package com.mycompany.crediya.dao;
 
 import com.mycompany.crediya.model.Cliente;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDAO {
 
-    // INSERTAR
-    public boolean guardar(Cliente cliente) {
+    // ==========================================================
+    // INSERTAR CLIENTE
+    // ==========================================================
+
+    public boolean insertar(Cliente cliente) {
 
         String sql = """
                 INSERT INTO clientes
@@ -28,25 +35,34 @@ public class ClienteDAO {
             ps.setString(3, cliente.getCorreo());
             ps.setString(4, cliente.getTelefono());
 
-            ps.executeUpdate();
+            int filas = ps.executeUpdate();
 
-            return true;
+            return filas > 0;
 
         } catch (SQLException e) {
 
-            System.out.println("Error al guardar cliente:");
-            System.out.println(e.getMessage());
+            System.out.println(
+                    "Error al registrar cliente: "
+                    + e.getMessage()
+            );
 
             return false;
         }
     }
 
-    // LISTAR
-    public List<Cliente> listar() {
+    // ==========================================================
+    // LISTAR CLIENTES
+    // ==========================================================
+
+    public List<Cliente> listarTodos() {
 
         List<Cliente> clientes = new ArrayList<>();
 
-        String sql = "SELECT * FROM clientes";
+        String sql = """
+                SELECT id, nombre, documento, correo, telefono
+                FROM clientes
+                ORDER BY id
+                """;
 
         try (Connection conexion = Conexion.conectar();
              PreparedStatement ps = conexion.prepareStatement(sql);
@@ -54,30 +70,39 @@ public class ClienteDAO {
 
             while (rs.next()) {
 
-                Cliente cliente = new Cliente();
-
-                cliente.setId(rs.getInt("id"));
-                cliente.setNombre(rs.getString("nombre"));
-                cliente.setDocumento(rs.getString("documento"));
-                cliente.setCorreo(rs.getString("correo"));
-                cliente.setTelefono(rs.getString("telefono"));
+                Cliente cliente = new Cliente(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("documento"),
+                        rs.getString("correo"),
+                        rs.getString("telefono")
+                );
 
                 clientes.add(cliente);
             }
 
         } catch (SQLException e) {
 
-            System.out.println("Error al listar clientes:");
-            System.out.println(e.getMessage());
+            System.out.println(
+                    "Error al listar clientes: "
+                    + e.getMessage()
+            );
         }
 
         return clientes;
     }
 
-    // BUSCAR POR ID
+    // ==========================================================
+    // BUSCAR CLIENTE POR ID
+    // ==========================================================
+
     public Cliente buscarPorId(int id) {
 
-        String sql = "SELECT * FROM clientes WHERE id = ?";
+        String sql = """
+                SELECT id, nombre, documento, correo, telefono
+                FROM clientes
+                WHERE id = ?
+                """;
 
         try (Connection conexion = Conexion.conectar();
              PreparedStatement ps = conexion.prepareStatement(sql)) {
@@ -88,22 +113,22 @@ public class ClienteDAO {
 
                 if (rs.next()) {
 
-                    Cliente cliente = new Cliente();
-
-                    cliente.setId(rs.getInt("id"));
-                    cliente.setNombre(rs.getString("nombre"));
-                    cliente.setDocumento(rs.getString("documento"));
-                    cliente.setCorreo(rs.getString("correo"));
-                    cliente.setTelefono(rs.getString("telefono"));
-
-                    return cliente;
+                    return new Cliente(
+                            rs.getInt("id"),
+                            rs.getString("nombre"),
+                            rs.getString("documento"),
+                            rs.getString("correo"),
+                            rs.getString("telefono")
+                    );
                 }
             }
 
         } catch (SQLException e) {
 
-            System.out.println("Error al buscar cliente:");
-            System.out.println(e.getMessage());
+            System.out.println(
+                    "Error al buscar cliente: "
+                    + e.getMessage()
+            );
         }
 
         return null;
