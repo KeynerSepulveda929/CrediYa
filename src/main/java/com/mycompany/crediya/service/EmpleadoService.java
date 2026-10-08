@@ -11,7 +11,10 @@ import java.util.List;
 public class EmpleadoService {
 
     private final EmpleadoDAO empleadoDAO;
-
+    
+    private static final EmpleadoService empleadoService =
+        new EmpleadoService();
+    
     public EmpleadoService() {
         this.empleadoDAO = new EmpleadoDAO();
     }

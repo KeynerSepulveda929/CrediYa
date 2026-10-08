@@ -48,4 +48,5 @@ public class Empleado extends Persona {
                 + " | Rol: " + rol
                 + " | Salario: $" + salario;
     }
+
 }
